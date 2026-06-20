@@ -19,7 +19,6 @@
 7. [Emissions Methodology](#-emissions-methodology)
 8. [Testing & Quality](#-testing--quality)
 9. [Limitations & Roadmap](#-limitations--roadmap)
-10. [Contributing](#-contributing)
 
 ---
 
@@ -29,12 +28,12 @@
 
 ### Who Is It For?
 
-| Audience | Use Case |
-|---|---|
-| **Individuals** | Understand personal emissions and identify quick wins |
-| **Households** | Compare annual footprint against national/global averages |
-| **Educators** | Demonstrate climate concepts interactively |
-| **Developers** | A reference project for Streamlit + LLM integration |
+| Audience        | Use Case                                                  |
+| --------------- | --------------------------------------------------------- |
+| **Individuals** | Understand personal emissions and identify quick wins     |
+| **Households**  | Compare annual footprint against national/global averages |
+| **Educators**   | Demonstrate climate concepts interactively                |
+| **Developers**  | A reference project for Streamlit + LLM integration       |
 
 ### Key Features
 
@@ -75,12 +74,12 @@
 
 ### What Is Deterministic vs. LLM-Assisted?
 
-| Layer | Technology | Responsibility |
-|---|---|---|
-| **Input validation** | Python / Pydantic | Range checks, unit normalisation, missing value handling |
-| **Emissions calculation** | Pure Python | Multiply activity data × emission factors; fully reproducible |
-| **Visualisation** | Plotly / Altair | Category breakdowns, comparisons, equivalencies |
-| **Natural-language summary** | LLM via HF Inference API | Translate numbers into plain English; suggest next steps |
+| Layer                            | Technology               | Responsibility                                                   |
+| -------------------------------- | ------------------------ | ---------------------------------------------------------------- |
+| **Input validation**             | Python / Pydantic        | Range checks, unit normalisation, missing value handling         |
+| **Emissions calculation**        | Pure Python              | Multiply activity data × emission factors; fully reproducible    |
+| **Visualisation**                | Plotly / Altair          | Category breakdowns, comparisons, equivalencies                  |
+| **Natural-language summary**     | LLM via HF Inference API | Translate numbers into plain English; suggest next steps         |
 | **Personalised recommendations** | LLM via HF Inference API | Context-aware tips based on the user's highest-impact categories |
 
 > 🔒 The LLM **never** sees raw personal inputs. Only the aggregated per-category CO₂ totals and the chosen lifestyle context (e.g., country, household size) are included in the prompt.
@@ -129,15 +128,15 @@ carbon-footprint-estimator/
 
 ### Key File Purposes
 
-| File / Folder | Purpose |
-|---|---|
-| `main.py` | Streamlit entry point; renders the landing page and session state initialisation |
-| `app/calculator.py` | Houses all emission factor lookups and CO₂ arithmetic — no LLM calls here |
-| `app/llm_client.py` | Thin wrapper around the Hugging Face `InferenceClient`; uses `chat_completion` for chat-based LLMs |
-| `app/prompts.py` | Centralised message templates; keeps LLM instructions versioned and easy to audit |
-| `data/emission_factors.yaml` | Single source of truth for emission coefficients; update here to change methodology |
-| `pages/` | One Streamlit page per estimation scope — keeps each form self-contained |
-| `tests/` | `pytest`-based tests; calculator and validator tests run fully offline |
+| File / Folder                | Purpose                                                                                            |
+| ---------------------------- | -------------------------------------------------------------------------------------------------- |
+| `main.py`                    | Streamlit entry point; renders the landing page and session state initialisation                   |
+| `app/calculator.py`          | Houses all emission factor lookups and CO₂ arithmetic — no LLM calls here                          |
+| `app/llm_client.py`          | Thin wrapper around the Hugging Face `InferenceClient`; uses `chat_completion` for chat-based LLMs |
+| `app/prompts.py`             | Centralised message templates; keeps LLM instructions versioned and easy to audit                  |
+| `data/emission_factors.yaml` | Single source of truth for emission coefficients; update here to change methodology                |
+| `pages/`                     | One Streamlit page per estimation scope — keeps each form self-contained                           |
+| `tests/`                     | `pytest`-based tests; calculator and validator tests run fully offline                             |
 
 ---
 
@@ -145,10 +144,10 @@ carbon-footprint-estimator/
 
 ### Prerequisites
 
-| Requirement | Minimum Version |
-|---|---|
-| Python | 3.10+ |
-| pip | 23+ (or use `uv` / `poetry`) |
+| Requirement          | Minimum Version                    |
+| -------------------- | ---------------------------------- |
+| Python               | 3.10+                              |
+| pip                  | 23+ (or use `uv` / `poetry`)       |
 | Hugging Face account | Free tier sufficient for inference |
 
 ### 1 — Clone the Repository
@@ -267,12 +266,12 @@ The app uses the **Hugging Face `InferenceClient`** (chat_completion endpoint) t
 
 **Input — Household Energy (UK, 2-person flat)**
 
-| Field | Value |
-|---|---|
-| Country | United Kingdom |
-| Electricity consumption | 280 kWh/month |
-| Natural gas consumption | 90 m³/month |
-| Renewable energy tariff | No |
+| Field                   | Value          |
+| ----------------------- | -------------- |
+| Country                 | United Kingdom |
+| Electricity consumption | 280 kWh/month  |
+| Natural gas consumption | 90 m³/month    |
+| Renewable energy tariff | No             |
 
 **Calculated Output**
 
@@ -286,18 +285,18 @@ Household Energy Emissions
 
 **LLM-Generated Insight**
 
-> *"Your household energy use contributes 2.64 tonnes of CO₂ equivalent per year — about 18 % above the UK household average of 2.23 tCO₂e. Your gas heating is the biggest driver. Switching to a heat pump could cut this by up to 60 %. In the short term, lowering your thermostat by 1 °C typically reduces heating emissions by around 8 %."*
+> _"Your household energy use contributes 2.64 tonnes of CO₂ equivalent per year — about 18 % above the UK household average of 2.23 tCO₂e. Your gas heating is the biggest driver. Switching to a heat pump could cut this by up to 60 %. In the short term, lowering your thermostat by 1 °C typically reduces heating emissions by around 8 %."_
 
 ### Screenshots
 
-| Page | Screenshot |
-|------|-----------|
-| Home | ![Home](docs/images/HOME.png) |
-| Household Energy | ![Household](docs/images/HOUSEHOLD.png) |
-| Travel | ![Travel](docs/images/TRAVEL.png) |
-| Food | ![Food](docs/images/FOOD.png) |
-| Shopping | ![Shopping](docs/images/SHOPPING.png) |
-| Results Dashboard | ![Results](docs/images/RESULT.png) |
+| Page              | Screenshot                              |
+| ----------------- | --------------------------------------- |
+| Home              | ![Home](docs/images/HOME.png)           |
+| Household Energy  | ![Household](docs/images/HOUSEHOLD.png) |
+| Travel            | ![Travel](docs/images/TRAVEL.png)       |
+| Food              | ![Food](docs/images/FOOD.png)           |
+| Shopping          | ![Shopping](docs/images/SHOPPING.png)   |
+| Results Dashboard | ![Results](docs/images/RESULT.png)      |
 
 ---
 
@@ -320,14 +319,14 @@ Example:
 
 > ⚠️ The factors below are illustrative placeholders. Replace with verified, jurisdiction-specific data before deploying for policy or reporting purposes.
 
-| Category | Factor Source (Placeholder) |
-|---|---|
-| Grid electricity | National grid average intensity (e.g., `[COUNTRY]_grid_intensity.yaml`) |
-| Natural gas | IPCC default combustion factors |
-| Petrol / diesel vehicles | DEFRA / EPA vehicle emission tables |
-| Flights | ICAO Carbon Emissions Calculator methodology |
-| Food (by diet type) | Poore & Nemecek (2018) lifecycle averages |
-| Consumer goods | Environmentally Extended Input-Output (EEIO) estimates |
+| Category                 | Factor Source (Placeholder)                                             |
+| ------------------------ | ----------------------------------------------------------------------- |
+| Grid electricity         | National grid average intensity (e.g., `[COUNTRY]_grid_intensity.yaml`) |
+| Natural gas              | IPCC default combustion factors                                         |
+| Petrol / diesel vehicles | DEFRA / EPA vehicle emission tables                                     |
+| Flights                  | ICAO Carbon Emissions Calculator methodology                            |
+| Food (by diet type)      | Poore & Nemecek (2018) lifecycle averages                               |
+| Consumer goods           | Environmentally Extended Input-Output (EEIO) estimates                  |
 
 ### Updating Emission Factors
 
@@ -337,19 +336,19 @@ All factors live in `data/emission_factors.yaml`. Structure example:
 # data/emission_factors.yaml (excerpt)
 electricity:
   GB:
-    kgCO2e_per_kwh: 0.233   # Source: DESNZ 2024 provisional
+    kgCO2e_per_kwh: 0.233 # Source: DESNZ 2024 provisional
     year: 2024
   IN:
-    kgCO2e_per_kwh: 0.716   # Source: CEA Grid 2023
+    kgCO2e_per_kwh: 0.716 # Source: CEA Grid 2023
     year: 2023
   default:
-    kgCO2e_per_kwh: 0.500   # Global average placeholder
+    kgCO2e_per_kwh: 0.500 # Global average placeholder
 
 transport:
   car_petrol_medium:
-    kgCO2e_per_km: 0.192    # Source: DEFRA 2023
+    kgCO2e_per_km: 0.192 # Source: DEFRA 2023
   short_haul_flight:
-    kgCO2e_per_pkm: 0.255   # Source: ICAO placeholder
+    kgCO2e_per_pkm: 0.255 # Source: ICAO placeholder
 ```
 
 To add a new country or update a factor, edit the YAML file and restart the app — no code changes needed.
@@ -370,11 +369,11 @@ pytest tests/ --cov=app --cov-report=term-missing
 
 ### What Is Tested
 
-| Test File | Coverage |
-|---|---|
+| Test File            | Coverage                                                                        |
+| -------------------- | ------------------------------------------------------------------------------- |
 | `test_calculator.py` | Known-good input → expected kgCO₂e output; edge cases (zero values, max values) |
-| `test_validators.py` | Invalid input rejection; boundary values; unit conversion correctness |
-| `test_llm_client.py` | Mocked API responses; retry behaviour; prompt construction; error handling |
+| `test_validators.py` | Invalid input rejection; boundary values; unit conversion correctness           |
+| `test_llm_client.py` | Mocked API responses; retry behaviour; prompt construction; error handling      |
 
 ### Example Unit Test
 
@@ -424,53 +423,18 @@ target-version = ["py310"]
 
 ### Roadmap
 
-| Priority | Feature |
-|---|---|
-| 🔴 High | Add real-time electricity carbon intensity via [Electricity Maps API](https://www.electricitymaps.com/) |
-| 🔴 High | PDF/CSV result export |
-| 🟡 Medium | Multi-language support (prompt localisation) |
-| 🟡 Medium | Historical tracking — optional local SQLite storage |
-| 🟡 Medium | Household comparison mode (multiple profiles) |
-| 🟢 Low | Public API endpoint for programmatic access |
-| 🟢 Low | Docker / `docker-compose` deployment recipe |
-| 🟢 Low | CI/CD pipeline with GitHub Actions |
+| Priority  | Feature                                                                                                 |
+| --------- | ------------------------------------------------------------------------------------------------------- |
+| 🔴 High   | Add real-time electricity carbon intensity via [Electricity Maps API](https://www.electricitymaps.com/) |
+| 🔴 High   | PDF/CSV result export                                                                                   |
+| 🟡 Medium | Multi-language support (prompt localisation)                                                            |
+| 🟡 Medium | Historical tracking — optional local SQLite storage                                                     |
+| 🟡 Medium | Household comparison mode (multiple profiles)                                                           |
+| 🟢 Low    | Public API endpoint for programmatic access                                                             |
+| 🟢 Low    | Docker / `docker-compose` deployment recipe                                                             |
+| 🟢 Low    | CI/CD pipeline with GitHub Actions                                                                      |
 
 ---
-
-## 🤝 Contributing
-
-Contributions are welcome! Please follow these steps:
-
-1. **Fork** the repository and create a feature branch:
-   ```bash
-   git checkout -b feature/your-feature-name
-   ```
-
-2. **Make your changes** and ensure tests pass:
-   ```bash
-   pytest tests/ -v
-   ```
-
-3. **Update emission factors or documentation** if your change affects methodology.
-
-4. **Open a Pull Request** with a clear description of:
-   - What the change does
-   - Why it is needed
-   - Any emission factor sources added or updated (with URLs)
-
-### Contribution Areas
-
-- 🌍 **New country emission factors** — add entries to `data/emission_factors.yaml` with a cited source.
-- 🧮 **Improved calculation methods** — open an issue first to discuss methodology changes.
-- 🎨 **UI improvements** — Streamlit component enhancements, accessibility fixes.
-- 🤖 **Prompt engineering** — better LLM prompts for clearer or more actionable output.
-- 🧪 **Tests** — additional edge cases, integration tests, or performance benchmarks.
-
-### Code Style
-
-- Follow [PEP 8](https://peps.python.org/pep-0008/) conventions.
-- Use type hints throughout (`app/` modules are fully typed).
-- Keep emission calculation functions **pure** (no side effects, no I/O).
 
 ## 🙏 Acknowledgements
 
