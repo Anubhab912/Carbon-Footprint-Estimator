@@ -1,0 +1,63 @@
+[project]
+name = "carbon-footprint-estimator"
+version = "0.1.0"
+description = "Estimate your carbon footprint with AI-powered insights"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+dependencies = [
+    "streamlit>=1.35.0",
+    "huggingface-hub>=0.23.0",
+    "pydantic>=2.7.0",
+    "plotly>=5.22.0",
+    "altair>=5.3.0",
+    "pyyaml>=6.0.1",
+    "python-dotenv>=1.0.1",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.2.0",
+    "pytest-mock>=3.14.0",
+    "pytest-cov>=4.1.0",
+    "ruff>=0.4.0",
+    "black>=24.4.0",
+    "pre-commit>=3.6.0",
+    "mypy>=1.10.0",
+]
+
+[tool.ruff]
+line-length = 88
+
+[tool.ruff.lint]
+preview = true
+select = ["E", "F", "I", "W", "UP", "B", "C4", "T20"]
+ignore = []
+per-file-ignores = {}
+
+[tool.black]
+line-length = 88
+target-version = ["py310"]
+preview = true
+
+[tool.mypy]
+python_version = "3.10"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+check_untyped_defs = true
+no_implicit_optional = true
+strict_optional = true
+show_error_codes = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-v --cov=app --cov-report=term-missing"
+
+[tool.coverage.run]
+source = ["app"]
+omit = ["tests/*", "*/__pycache__/*"]
+
+[tool.coverage.report]
+fail_under = 80
+show_missing = true

@@ -1,0 +1,48 @@
+# data/emission_factors.yaml
+# Emission factors by category, subcategory, and country (ISO 3166-1 alpha-2)
+# Sources marked as placeholders — replace with verified data before production use.
+#
+# Structure:
+#   Simple (no country variation): subcategory: value
+#   Per-country: subcategory: { COUNTRY: value, default: value }
+
+electricity:
+  kgCO2e_per_kwh:
+    GB: 0.233       # Source: DESNZ 2024 provisional
+    IN: 0.716       # Source: CEA Grid 2023
+    US: 0.417       # Source: EPA eGRID 2022
+    DE: 0.434       # Source: Umweltbundesamt 2023
+    default: 0.500  # Global average placeholder
+
+natural_gas:
+  kgCO2e_per_m3:
+    GB: 1.879       # Source: DESNZ 2024
+    IN: 1.800       # Source: IPCC default placeholder
+    US: 1.920       # Source: EPA 2023
+    default: 1.850  # Global average placeholder
+
+transport:
+  car_petrol_small: 0.150
+  car_petrol_medium: 0.192
+  car_petrol_large: 0.255
+  car_diesel_small: 0.140
+  car_diesel_medium: 0.180
+  car_diesel_large: 0.240
+  car_electric_medium: 0.050
+  car_hybrid_medium: 0.120
+  economy_flight: 0.255
+  premium_economy_flight: 0.380
+  business_flight: 0.510
+  first_class_flight: 0.765
+
+food:
+  omnivore_per_person: 1800.0
+  pescatarian_per_person: 1200.0
+  vegetarian_per_person: 800.0
+  vegan_per_person: 500.0
+
+shopping:
+  general_per_eur: 0.400
+  clothing_per_eur: 0.600
+  electronics_per_eur: 0.300
+  furniture_per_eur: 0.500
