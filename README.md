@@ -116,7 +116,7 @@ carbon-footprint-estimator/
 │   └── test_llm_client.py        # Mocked LLM integration tests
 │
 ├── docs/
-│   └── images/                   # Screenshot placeholders for README
+│   └── images/                   # Application screenshots
 │
 ├── .env.example                  # Example environment variables (no secrets)
 ├── .gitignore
